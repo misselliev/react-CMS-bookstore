@@ -1,10 +1,10 @@
 import React from "react";
-import Redux from "redux";
+import { createStore } from "redux";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { rootReducer } from "./reducers/books";
+import rootReducer from "./reducers/books";
 import { Provider } from "react-redux";
 
 const initState = [
@@ -27,7 +27,7 @@ const initState = [
     category: "Biography"
   }
 ];
-const store = Redux.createStore(rootReducer, initState);
+const store = createStore(rootReducer, initState);
 
 ReactDOM.render(
   <Provider store={store}>

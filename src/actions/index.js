@@ -18,4 +18,4 @@ const removeBook = book => {
   };
 };
 
-export { createBook, removeBook };
+export { createBook, removeBook, CREATE_BOOK, REMOVE_BOOK };
