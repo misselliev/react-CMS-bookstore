@@ -3,7 +3,6 @@ import Book from "../components/Book";
 import { connect } from "react-redux";
 
 export const BookList = ({ books }) => {
-  console.log("books ", books);
   return (
     <div>
       <table>
