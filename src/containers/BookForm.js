@@ -42,6 +42,7 @@ class BooksForm extends React.Component {
         <input
           type="text"
           name="input"
+          label="input"
           value={this.state.input}
           onChange={this.handleChange}
           placeholder="Book name"
@@ -49,6 +50,7 @@ class BooksForm extends React.Component {
         <select
           value={this.state.category}
           id="category"
+          label="selector"
           onChange={this.handleChange}
         >
           {bookCategories.map(category => (
