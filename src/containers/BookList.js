@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "../containers/Book";
+import Book from "../components/Book";
 import { connect } from "react-redux";
 
 export const BookList = ({ books }) => {
@@ -22,7 +22,7 @@ export const BookList = ({ books }) => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   books: state
 });
 
