@@ -1,4 +1,3 @@
-// Create book action and action creator
 const CREATE_BOOK = "CREATE_BOOK";
 
 const createBook = book => {
@@ -8,7 +7,6 @@ const createBook = book => {
   };
 };
 
-// Remove book action and action creator
 const REMOVE_BOOK = "REMOVE_BOOK";
 
 const removeBook = book => {
