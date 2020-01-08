@@ -16,7 +16,7 @@ class BooksForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: Math.floor(Math.random() * 100),
+      key: Math.floor(Math.random() * 100),
       input: "",
       category: bookCategories[0]
     };
@@ -30,27 +30,13 @@ class BooksForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // const newBook = this.state;
-    // const { createBook } = this.props;
     const newBook = {
-      id: Math.floor(Math.random() * 100),
+      key: new Date().getTime(),
       title: this.state.input,
       category: this.state.category
     };
-    this.props
-      .createBook(newBook)
-      // createBook({
-      //   id: Math.floor(Math.random() * 100),
-      //   title: this.state.input,
-      //   category: this.state.category
-      // })
-      .then(
-        this.setState({
-          id: Math.floor(Math.random() * 100),
-          input: "",
-          category: bookCategories[0]
-        })
-      );
+    this.props.createBook(newBook);
+    return newBook;
   }
 
   render() {
@@ -79,4 +65,18 @@ class BooksForm extends React.Component {
   }
 }
 
-export default connect(null, { createBook })(BooksForm);
+const mapStateToProps = state => {
+  return {
+    books: state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createBook: book => {
+      dispatch(createBook(book));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);
