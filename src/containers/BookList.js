@@ -2,6 +2,10 @@ import React from "react";
 import Book from "../components/Book";
 import { connect } from "react-redux";
 
+const deleteBook = (event) => {
+  console.log('event ', event);
+  debugger
+}
 export const BookList = ({ books }) => {
   return (
     <div>
@@ -14,6 +18,7 @@ export const BookList = ({ books }) => {
               title={book.title}
               author={book.author}
               category={book.category}
+              handleDelete={deleteBook}
             />
           ))}
         </tbody>
