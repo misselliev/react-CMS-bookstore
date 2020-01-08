@@ -1,10 +1,12 @@
 import React from "react";
-import Book from "../components/Book";
+import {Book} from "../components/Book";
 import { connect } from "react-redux";
+import { removeBook } from "../actions";
+import { store } from "../index"
 
 const deleteBook = (event) => {
-  console.log('event ', event);
-  debugger
+  const book = store.getState().filter(item => parseInt(event.target.id) === item.key);
+  store.dispatch(removeBook(book[0]));
 }
 export const BookList = ({ books }) => {
   return (
@@ -27,8 +29,10 @@ export const BookList = ({ books }) => {
   );
 };
 
-export const mapStateToProps = state => ({
-  books: state
-});
+const mapStateToProps = state => {
+  return {
+    books: state
+  };
+};
 
 export default connect(mapStateToProps, null)(BookList);

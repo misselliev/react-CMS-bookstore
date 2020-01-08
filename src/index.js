@@ -27,7 +27,7 @@ const initState = [
     category: "Biography"
   }
 ];
-const store = createStore(rootReducer, initState);
+export const store = createStore(rootReducer, initState);
 
 ReactDOM.render(
   <Provider store={store}>
