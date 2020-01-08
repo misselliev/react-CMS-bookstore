@@ -25,21 +25,32 @@ class BooksForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const newBook = this.state;
-    const { createBook } = this.props;
-    createBook(newBook);
-    this.setState({
+    // const newBook = this.state;
+    // const { createBook } = this.props;
+    const newBook = {
       id: Math.floor(Math.random() * 100),
       title: this.state.input,
-      category: bookCategories[0]
-    });
+      category: this.state.category
+    };
+    this.props
+      .createBook(newBook)
+      // createBook({
+      //   id: Math.floor(Math.random() * 100),
+      //   title: this.state.input,
+      //   category: this.state.category
+      // })
+      .then(
+        this.setState({
+          id: Math.floor(Math.random() * 100),
+          input: "",
+          category: bookCategories[0]
+        })
+      );
   }
 
   render() {
@@ -55,13 +66,9 @@ class BooksForm extends React.Component {
           placeholder="Book name"
         />{" "}
         <label>Book category</label>
-        <select
-          value={this.state.category}
-          id="category"
-          onChange={this.handleChange}
-        >
+        <select name="category" onChange={this.handleChange}>
           {bookCategories.map(category => (
-            <option id={category} value={category} key={category}>
+            <option value={category} key={category}>
               {category}
             </option>
           ))}
