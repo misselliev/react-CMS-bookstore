@@ -19,7 +19,7 @@ const initState = [
     title: 'Be the Woof',
     author: 'Dulce',
     category: 'Biography',
-  }
+  },
 ];
 
 const store = createStore(rootReducer, initState);
