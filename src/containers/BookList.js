@@ -1,8 +1,8 @@
-import React from "react";
-import {Book} from "../components/Book";
-import { connect } from "react-redux";
-import { removeBook } from "../actions";
-import { store } from "../index"
+import React from 'react';
+import { Book } from '../components/Book';
+import { connect } from 'react-redux';
+import { removeBook } from '../actions';
+import { store } from '../index'
 
 const deleteBook = (event) => {
   const book = store.getState().filter(item => parseInt(event.target.id) === item.key);
@@ -29,9 +29,9 @@ export const BookList = ({ books }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    books: state
+    books: state,
   };
 };
 

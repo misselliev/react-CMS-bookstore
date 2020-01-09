@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createBook } from "../actions/index";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createBook } from '../actions/index';
 
 const bookCategories = [
-  "Action",
-  "Biography",
-  "History",
-  "Horror",
-  "Kids",
-  "Learning",
-  "Sci-Fi"
+  'Action',
+  'Biography',
+  'History',
+  'Horror',
+  'Kids',
+  'Learning',
+  'Sci-Fi'
 ];
 
 class BooksForm extends React.Component {
@@ -17,7 +17,7 @@ class BooksForm extends React.Component {
     super(props);
     this.state = {
       key: Math.floor(Math.random() * 100),
-      input: "",
+      input: '',
       category: bookCategories[0]
     };
     this.handleChange = this.handleChange.bind(this);
@@ -45,37 +45,35 @@ class BooksForm extends React.Component {
         <h2>Add a New Book</h2>
         <label>Book name</label>
         <input
-          type="text"
-          name="input"
+          type='text'
+          name='input'
           value={this.state.input}
           onChange={this.handleChange}
-          placeholder="Book name"
-        />{" "}
+          placeholder='Book name'
+        />{' '}
         <label>Book category</label>
-        <select name="category" onChange={this.handleChange}>
+        <select name='category' onChange={this.handleChange}>
           {bookCategories.map(category => (
             <option value={category} key={category}>
               {category}
             </option>
           ))}
-        </select>{" "}
+        </select>{' '}
         <button>Add Book</button>
       </form>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    books: state
+    books: state,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    createBook: book => {
-      dispatch(createBook(book));
-    }
+    createBook: (book) => dispatch(createBook(book)),
   };
 };
 
