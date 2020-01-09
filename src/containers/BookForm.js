@@ -34,7 +34,7 @@ class BooksForm extends React.Component {
     const newBook = {
       key: new Date().getTime(),
       title: input,
-      category: category,
+      category,
     };
     createBook(newBook);
     return newBook;
@@ -46,36 +46,30 @@ class BooksForm extends React.Component {
         <h2>Add a New Book</h2>
         <label>Book name</label>
         <input
-          type='text'
-          name='input'
+          type="text"
+          name="input"
           value={this.state.input}
           onChange={this.handleChange}
-          placeholder='Book name'
-        />{' '}
+          placeholder="Book name"
+        />
+        {' '}
         <label>Book category</label>
-        <select name='category' onChange={this.handleChange}>
+        <select name="category" onChange={this.handleChange}>
           {bookCategories.map(category => (
             <option value={category} key={category}>
               {category}
             </option>
           ))}
-        </select>{' '}
-        <button type='submit'>Add Book</button>
+        </select>
+        {' '}
+        <button type="submit">Add Book</button>
       </form>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    books: state,
-  };
-};
+const mapStateToProps = (state) => ({books: state});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createBook: (book) => dispatch(createBook(book)),
-  };
-};
+const mapDispatchToProps = (dispatch) =>  ({createBook: (book) => dispatch(createBook(book))});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);
