@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
 import { removeBook } from '../actions';
-import store from '../index';
+import store from '../store';
 
 const deleteBook = (event) => {
   const book = store.getState().filter(item => parseInt(event.target.id, 10) === item.key);
   store.dispatch(removeBook(book[0]));
 };
-export const BookList = ({ books }) => {
+const BookList = ({ books }) => {
   return (
     <div>
       <table>
