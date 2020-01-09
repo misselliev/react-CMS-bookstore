@@ -9,14 +9,14 @@ const bookCategories = [
   'Horror',
   'Kids',
   'Learning',
-  'Sci-Fi'
+  'Sci-Fi',
 ];
 
 class BooksForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: Math.floor(Math.random() * 100),
+      key: '',
       input: '',
       category: bookCategories[0]
     };
@@ -33,7 +33,7 @@ class BooksForm extends React.Component {
     const newBook = {
       key: new Date().getTime(),
       title: this.state.input,
-      category: this.state.category
+      category: this.state.category,
     };
     this.props.createBook(newBook);
     return newBook;

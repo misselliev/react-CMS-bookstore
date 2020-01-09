@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Book = (props) => {
-  return (
+const Book = ({props}) => (
     <tr>
       <td>{props.id}</td>
       <td>{props.title}</td>
@@ -13,4 +12,5 @@ export const Book = (props) => {
       </td>
     </tr>
   );
-};
+
+export default Book;
