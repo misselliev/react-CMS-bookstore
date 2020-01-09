@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createBook } from '../actions/index';
 
-const bookCategories = [
+export const bookCategories = [
   'Action',
   'Biography',
   'History',
