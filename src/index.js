@@ -7,6 +7,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers/books';
 
+let store;
 const initState = [
   {
     key: new Date().getTime() + 1,
@@ -27,13 +28,14 @@ const initState = [
     category: 'Biography',
   }
 ];
-export const store = createStore(rootReducer, initState);
+
+export default store = createStore(rootReducer, initState);
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
