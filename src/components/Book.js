@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Book = ({ 
+const Book = ({
   id,
   title,
   category,
-  handleDelete
+  handleDelete,
 }) => (
   <tr>
     <td>{ id }</td>

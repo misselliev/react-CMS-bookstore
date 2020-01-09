@@ -29,12 +29,14 @@ class BooksForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { input, category } = this.state;
+    const { createBook } = this.props;
     const newBook = {
       key: new Date().getTime(),
-      title: this.state.input,
-      category: this.state.category,
+      title: input,
+      category: category,
     };
-    this.props.createBook(newBook);
+    createBook(newBook);
     return newBook;
   }
 
