@@ -59,7 +59,7 @@ class BooksForm extends React.Component {
             </option>
           ))}
         </select>{' '}
-        <button>Add Book</button>
+        <button type='submit'>Add Book</button>
       </form>
     );
   }

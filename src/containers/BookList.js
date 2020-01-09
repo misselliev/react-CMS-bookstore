@@ -29,10 +29,7 @@ export const BookList = ({ books }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    books: state,
-  };
-};
+const mapStateToProps = (state) => {books: state}
+
 
 export default connect(mapStateToProps, null)(BookList);
