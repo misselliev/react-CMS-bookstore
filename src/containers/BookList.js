@@ -1,28 +1,33 @@
-import React from "react";
-import Book from "../components/Book";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
+import Book from '../components/Book';
+import { removeBook } from '../actions';
+import store from '../store';
 
-export const BookList = ({ books }) => {
-  return (
-    <div>
-      <table>
-        <tbody>
-          {books.map(book => (
-            <Book
-              id={book.id}
-              title={book.title}
-              author={book.author}
-              category={book.category}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+const deleteBook = (event) => {
+  const book = store.getState().filter(item => parseInt(event.target.id, 10) === item.key);
+  store.dispatch(removeBook(book[0]));
 };
+const BookList = ({ books }) => (
+  <div>
+    <table>
+      <tbody>
+        {books.map(book => (
+          <Book
+            key={book.key}
+            id={book.key}
+            title={book.title}
+            author={book.author}
+            category={book.category}
+            handleDelete={deleteBook}
+          />
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 
-export const mapStateToProps = state => ({
-  books: state
-});
+const mapStateToProps = state => ({ books: state });
+
 
 export default connect(mapStateToProps, null)(BookList);

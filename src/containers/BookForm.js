@@ -1,38 +1,44 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createBook } from "../actions/index";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createBook } from '../actions/index';
 
 const bookCategories = [
-  "Action",
-  "Biography",
-  "History",
-  "Horror",
-  "Kids",
-  "Learning",
-  "Sci-Fi"
+  'Action',
+  'Biography',
+  'History',
+  'Horror',
+  'Kids',
+  'Learning',
+  'Sci-Fi',
 ];
-
 class BooksForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: "",
+    this.inputState = {
+      input: '',
       category: bookCategories[0]
     };
+    this.state = this.inputState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.id]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const newBook = this.state;
+    const { input, category } = this.state;
     const { createBook } = this.props;
+    const newBook = {
+      key: new Date().getTime(),
+      title: input,
+      category,
+    };
+    this.setState(this.inputState);
     createBook(newBook);
-    this.setState({ title: "", category: bookCategories[0] });
+    return newBook;
   }
 
   render() {
@@ -41,28 +47,31 @@ class BooksForm extends React.Component {
         <h2>Add a New Book</h2>
         <label>Book name</label>
         <input
+          label="nameInput"
           type="text"
           name="input"
           value={this.state.input}
           onChange={this.handleChange}
           placeholder="Book name"
-        />{" "}
+        />
+        {' '}
         <label>Book category</label>
-        <select
-          value={this.state.category}
-          id="category"
-          onChange={this.handleChange}
-        >
+        <select name="category" onChange={this.handleChange} label="selectCategory">
           {bookCategories.map(category => (
-            <option id={category} value={category} key={category}>
+            <option value={category} key={category}>
               {category}
             </option>
           ))}
-        </select>{" "}
-        <button>Add Book</button>
+        </select>
+        {' '}
+        <button type="submit">Add Book</button>
       </form>
     );
   }
 }
 
-export default connect(null, { createBook })(BooksForm);
+const mapStateToProps = state => ({ books: state });
+
+const mapDispatchToProps = dispatch => ({ createBook: book => dispatch(createBook(book)) });
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);
