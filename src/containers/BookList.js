@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book } from '../components/Book';
+import Book from '../components/Book';
 import { connect } from 'react-redux';
 import { removeBook } from '../actions';
 import { store } from '../index'
@@ -29,7 +29,7 @@ export const BookList = ({ books }) => {
   );
 };
 
-const mapStateToProps = (state) => {books: state}
+const mapStateToProps = (state) => ({books: state});
 
 
 export default connect(mapStateToProps, null)(BookList);

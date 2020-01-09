@@ -16,7 +16,6 @@ class BooksForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: '',
       input: '',
       category: bookCategories[0]
     };
