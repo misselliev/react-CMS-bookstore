@@ -11,14 +11,14 @@ const bookCategories = [
   'Learning',
   'Sci-Fi',
 ];
-
 class BooksForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.inputState = {
       input: '',
       category: bookCategories[0]
     };
+    this.state = this.inputState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -36,6 +36,7 @@ class BooksForm extends React.Component {
       title: input,
       category,
     };
+    this.setState(this.inputState);
     createBook(newBook);
     return newBook;
   }
