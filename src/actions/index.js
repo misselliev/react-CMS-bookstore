@@ -16,4 +16,10 @@ const removeBook = book => {
   };
 };
 
-export { createBook, removeBook, CREATE_BOOK, REMOVE_BOOK };
+const FILTER_BOOK = "FILTER_BOOK";
+const filterBook = category => ({
+    type: FILTER_BOOK,
+    category
+  })
+
+export { createBook, removeBook, CREATE_BOOK, REMOVE_BOOK, FILTER_BOOK, filterBook };
