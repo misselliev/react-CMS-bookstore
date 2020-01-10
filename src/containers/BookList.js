@@ -22,8 +22,7 @@ const BookList = ({ books }) => (
   </div>
 );
 
-const mapStateToProps = state => ({ books: state });
+const mapStateToProps = state => ({ books: state.filters });
 const mapDispatchToProps = dispatch => ({ removeBook: book => dispatch(removeBook(book)) });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);

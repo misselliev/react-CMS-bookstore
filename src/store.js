@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-import rootReducer from './reducers/books';
+import rootReducer from './reducers/index';
 
-const initState = [
+const bookArray = [
   {
     key: new Date().getTime() + 1,
     id: new Date().getTime() + 1,
@@ -24,6 +24,11 @@ const initState = [
     category: 'Biography',
   },
 ];
+
+const initState = {
+  books: bookArray,
+  filters: bookArray,
+};
 
 const store = createStore(rootReducer, initState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

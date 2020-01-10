@@ -5,17 +5,16 @@ import { bookCategories } from '../containers/BookForm';
 
 
 const options = ['All', ...bookCategories];
-class CategoryFilter extends React.Component{
-  constructor(props){
-    super(props);
-    this.selectCategory = this.selectCategory.bind(this);
+
+const CategoryFilter = (props) => {
+  const { books, changeFilter } = props;
+  const selectCategory = (event) => {
+    return changeFilter(books, event.target.value);
   }
-  selectCategory = (event) => {this.props.changeFilter(event.target.value);
-  }
-  render(){
-    return (
+
+  return (
     <div>
-      <select name="category" onChange={this.selectCategory} label="selectCategory">
+      <select name="category" books={books} onChange={selectCategory} label="selectCategory">
         {options.map(category => (
           <option value={category} key={category}>
             {category}
@@ -25,8 +24,13 @@ class CategoryFilter extends React.Component{
     </div>
   )
 }
-}
 
-const mapDispatchToProps = dispatch => ({ changeFilter: category => dispatch(changeFilter(category))})
+const mapStateToProps = state => ({ books: state.books });
 
-export default connect(null, mapDispatchToProps)(CategoryFilter);
+const mapDispatchToProps = dispatch => ({
+  changeFilter: (books, category) => {
+    return dispatch(changeFilter(books, category))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryFilter);
