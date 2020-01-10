@@ -3,16 +3,19 @@ import { connect } from 'react-redux';
 import { changeFilter } from '../actions/index';
 import { bookCategories } from '../containers/BookForm';
 
-const selectCategory = (event) => {
-  changeFilter(event.target.value);
-}
 
-export const CategoryFilter = () => {
-  const options = ['All', ...bookCategories];
-
-  return (
+const options = ['All', ...bookCategories];
+class CategoryFilter extends React.Component{
+  constructor(props){
+    super(props);
+    this.selectCategory = this.selectCategory.bind(this);
+  }
+  selectCategory = (event) => {this.props.changeFilter(event.target.value);
+  }
+  render(){
+    return (
     <div>
-      <select name="category" onChange={selectCategory} label="selectCategory">
+      <select name="category" onChange={this.selectCategory} label="selectCategory">
         {options.map(category => (
           <option value={category} key={category}>
             {category}
@@ -22,4 +25,8 @@ export const CategoryFilter = () => {
     </div>
   )
 }
+}
 
+const mapDispatchToProps = dispatch => ({ changeFilter: category => dispatch(changeFilter(category))})
+
+export default connect(null, mapDispatchToProps)(CategoryFilter);
