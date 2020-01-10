@@ -12,14 +12,16 @@ const CategoryFilter = (props) => {
 
   return (
     <div>
-      <label>Please select a category</label>
-      <select name="category" books={books} onChange={selectCategory}>
-        {options.map(category => (
-          <option value={category} key={category}>
-            {category}
-          </option>
-        ))}
-      </select>
+      <form>
+        <label>Please select a category</label>
+        <select name="category" books={books} onChange={selectCategory}>
+          {options.map(category => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </form>
     </div>
   );
 };
