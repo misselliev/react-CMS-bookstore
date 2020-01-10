@@ -27,7 +27,7 @@ const bookArray = [
 
 const initState = {
   books: bookArray,
-  filters: bookArray,
+  filter: 'All',
 };
 
 const store = createStore(rootReducer, initState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
