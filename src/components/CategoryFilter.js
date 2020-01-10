@@ -12,8 +12,7 @@ const CategoryFilter = (props) => {
 
   return (
     <div>
-      <form>
-        <label id="category">Please select a category</label>
+      <label>
         <select name="category" books={books} onChange={selectCategory}>
           {options.map(category => (
             <option value={category} key={category}>
@@ -21,7 +20,7 @@ const CategoryFilter = (props) => {
             </option>
           ))}
         </select>
-      </form>
+      </label>
     </div>
   );
 };
