@@ -12,7 +12,8 @@ const CategoryFilter = (props) => {
 
   return (
     <div>
-      <select name="category" books={books} onChange={selectCategory} label="selectCategory">
+      <label>Please select a category</label>
+      <select name="category" books={books} onChange={selectCategory}>
         {options.map(category => (
           <option value={category} key={category}>
             {category}
