@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import Book from '../components/Book';
 import { removeBook } from '../actions';
 
-const filtering = (books, filterRes) =>  (filterRes === 'All' ? books : books.filter(book => book.category === filterRes));
+const filtering = (books, filterRes) => (filterRes === 'All' ? books : books.filter(book => book.category === filterRes));
 
 const BookList = ({ books, filter }) => (
   <div>
     <table>
       <tbody>
-        {filtering(books, filter).map((book) => (
+        {filtering(books, filter).map(book => (
           <Book
             key={book.key}
             id={book.key}
@@ -24,7 +24,7 @@ const BookList = ({ books, filter }) => (
   </div>
 );
 
-const mapStateToProps = state => ({ books: state.books, filter: state.filter});
+const mapStateToProps = state => ({ books: state.books, filter: state.filter });
 const mapDispatchToProps = dispatch => ({ removeBook: book => dispatch(removeBook(book)) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);

@@ -31,7 +31,7 @@ class BooksForm extends React.Component {
     event.preventDefault();
     const { input, category } = this.state;
     const { createBook } = this.props;
-    const id = new Date().getTime() 
+    const id = new Date().getTime();
     const newBook = {
       id,
       key: id,
