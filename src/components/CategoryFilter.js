@@ -8,9 +8,7 @@ const options = ['All', ...bookCategories];
 
 const CategoryFilter = (props) => {
   const { books, changeFilter } = props;
-  const selectCategory = (event) => {
-    return changeFilter(books, event.target.value);
-  }
+  const selectCategory = (event) => (changeFilter(books, event.target.value));
 
   return (
     <div>
@@ -22,15 +20,11 @@ const CategoryFilter = (props) => {
         ))}
       </select>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({ books: state.books });
 
-const mapDispatchToProps = dispatch => ({
-  changeFilter: (books, category) => {
-    return dispatch(changeFilter(books, category))
-  }
-})
+const mapDispatchToProps = dispatch => ({ changeFilter: (books, category) => dispatch(changeFilter(books, category)) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryFilter);

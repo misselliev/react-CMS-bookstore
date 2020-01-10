@@ -2,30 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { removeBook } from '../actions/index';
 
-class Book extends React.Component{
-  constructor(props){
+class Book extends React.Component {
+  constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleDelete() {
-    return this.props.removeBook(this.props);
+    const { removeBook } = this.props;
+    return removeBook(this.props);
   }
 
-  render(){
+  render() {
     const { id, title, category } = this.props;
     return (
-     <tr>
-       <td>{ id }</td>
-       <td>{ title }</td>
-       <td>{ category }</td>
-       <td>
-         <button type="submit" id={id} onClick={this.handleDelete}>
-           Delete
-         </button>
-       </td>
-     </tr>
-   );
+      <tr>
+        <td>{ id }</td>
+        <td>{ title }</td>
+        <td>{ category }</td>
+        <td>
+          <button type="submit" id={id} onClick={this.handleDelete}>
+            Delete
+          </button>
+        </td>
+      </tr>
+    );
   }
 }
 
