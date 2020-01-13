@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createBook } from '../actions/index';
 
-const bookCategories = [
+export const bookCategories = [
   'Action',
   'Biography',
   'History',
@@ -31,8 +31,10 @@ class BooksForm extends React.Component {
     event.preventDefault();
     const { input, category } = this.state;
     const { createBook } = this.props;
+    const id = new Date().getTime();
     const newBook = {
-      key: new Date().getTime(),
+      id,
+      key: id,
       title: input,
       category,
     };

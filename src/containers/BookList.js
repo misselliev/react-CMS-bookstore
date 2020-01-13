@@ -2,24 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
 import { removeBook } from '../actions';
-import store from '../store';
 
-const deleteBook = (event) => {
-  const book = store.getState().filter(item => parseInt(event.target.id, 10) === item.key);
-  store.dispatch(removeBook(book[0]));
-};
-const BookList = ({ books }) => (
+const filtering = (books, filterRes) => (filterRes === 'All' ? books : books.filter(book => book.category === filterRes));
+
+const BookList = ({ books, filter }) => (
   <div>
     <table>
       <tbody>
-        {books.map(book => (
+        {filtering(books, filter).map(book => (
           <Book
             key={book.key}
             id={book.key}
             title={book.title}
             author={book.author}
             category={book.category}
-            handleDelete={deleteBook}
+            handleDelete={removeBook(book)}
           />
         ))}
       </tbody>
@@ -27,7 +24,7 @@ const BookList = ({ books }) => (
   </div>
 );
 
-const mapStateToProps = state => ({ books: state });
+const mapStateToProps = state => ({ books: state.books, filter: state.filter });
+const mapDispatchToProps = dispatch => ({ removeBook: book => dispatch(removeBook(book)) });
 
-
-export default connect(mapStateToProps, null)(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
