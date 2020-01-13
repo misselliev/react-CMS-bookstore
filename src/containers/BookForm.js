@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { createBook } from '../actions/index';
 import bookFormCSS from '../components/styles/BookFormStyle';
 
-const { formStyle, formTitle, formSelector, formInput, formButton } = bookFormCSS;
+const {
+  formStyle,
+  formTitle,
+  formSelector,
+  formInput,
+  formButton
+} = bookFormCSS;
 
 export const bookCategories = [
   'Action',
@@ -65,17 +71,17 @@ class BooksForm extends React.Component {
         </label>
         {' '}
         <label htmlFor="bookCategory">
-          <select 
+          <select
             style={formSelector}
             id="bookCategory"
             name="category"
             onChange={this.handleChange}
             label="selectCategory">
-              {bookCategories.map(category => (
-                <option value={category} key={category}>
-                  {category}
-                </option>
-              ))}
+            {bookCategories.map(category => (
+              <option value={category} key={category}>
+                {category}
+              </option>
+            ))}
           </select>
         </label>
         {' '}

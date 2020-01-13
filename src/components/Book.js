@@ -34,7 +34,7 @@ class Book extends React.Component {
         <div style={styleTitle}>{title}</div>
         <div style={styleAuthor}>{author}</div>
         <div>
-          <div style={styleRemove} type="submit" id={id} onClick={this.handleDelete} onKeyDown={this.handleDelete} role="button" tabindex="0">
+          <div style={styleRemove} type="submit" id={id} onClick={this.handleDelete} onKeyDown={this.handleDelete} role="button" tabIndex="0">
             Delete
           </div>
         </div>

@@ -49,6 +49,6 @@ const bookFormCSS = {
     textAlign: 'center',
     color: '#ffffff',
   },
-}
+};
 
 export default bookFormCSS;
