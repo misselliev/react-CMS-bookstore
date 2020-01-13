@@ -1,4 +1,4 @@
-export const styleCard = {
+const styleCard = {
   borderRadius: 4,
   border: 'solid 1px #e8e8e8',
   backgroundColor: '#ffffff',
@@ -6,3 +6,5 @@ export const styleCard = {
   padding: 27,
   textAlign: 'left',
 };
+
+export default styleCard;

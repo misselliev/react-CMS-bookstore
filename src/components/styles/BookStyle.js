@@ -50,6 +50,6 @@ const bookCSS = {
     color: '#4386bf',
     marginTop: 21,
   },
-}
+};
 
 export default bookCSS;

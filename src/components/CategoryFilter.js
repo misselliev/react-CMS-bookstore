@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeFilter } from '../actions/index';
 import { bookCategories } from '../containers/BookForm';
-import { formSelector, labelSelect } from './styles/FilterStyle'
+import { formSelector, labelSelect } from './styles/FilterStyle';
 
 
 const options = ['All', ...bookCategories];
@@ -13,7 +13,8 @@ const CategoryFilter = (props) => {
 
   return (
     <span>
-      <label htmlFor="category" style={labelSelect}>CATEGORIES: 
+      <label htmlFor="category" style={labelSelect}>
+        CATEGORIES:
         <select style={formSelector} id="category" name="category" books={books} onChange={selectCategory}>
           {options.map(category => (
             <option value={category} key={category}>

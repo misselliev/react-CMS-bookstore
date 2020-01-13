@@ -6,8 +6,9 @@ export const formSelector = {
   backgroundColor: '#ffffff',
   marginTop: 29,
   marginRight: 100,
-}
-export const labelSelect={
+};
+
+export const labelSelect = {
   fontFamily: 'Montserrat',
   fontSize: 13,
   fontWeight: 'normal',
@@ -16,4 +17,4 @@ export const labelSelect={
   lineHeight: 'normal',
   letterSpacing: 1.9,
   color: '#121212',
-}
+};
