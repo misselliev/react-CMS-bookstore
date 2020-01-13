@@ -1,6 +1,5 @@
 import React from 'react';
-import core from '@emotion/core';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 
 export const Header = styled.header`
