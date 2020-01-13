@@ -54,6 +54,7 @@ class BooksForm extends React.Component {
   }
 
   render() {
+    const { input } = this.state;
     return (
       <form onSubmit={this.handleSubmit} style={formStyle}>
         <h2 style={formTitle}>ADD A NEW BOOK</h2>
