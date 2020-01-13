@@ -8,7 +8,7 @@ const {
   formTitle,
   formSelector,
   formInput,
-  formButton
+  formButton,
 } = bookFormCSS;
 
 export const bookCategories = [
@@ -63,7 +63,7 @@ class BooksForm extends React.Component {
             label="nameInput"
             type="text"
             name="input"
-            value={this.state.input}
+            value={input}
             onChange={this.handleChange}
             placeholder="Book name"
             style={formInput}
@@ -76,7 +76,8 @@ class BooksForm extends React.Component {
             id="bookCategory"
             name="category"
             onChange={this.handleChange}
-            label="selectCategory">
+            label="selectCategory"
+          >
             {bookCategories.map(category => (
               <option value={category} key={category}>
                 {category}
