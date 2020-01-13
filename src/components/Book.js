@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeBook } from '../actions/index';
-import bookCSS from './styles/BookStyle'; 
+import bookCSS from './styles/BookStyle';
 
-const {styleCategory, styleAuthor, styleTitle, styleRemove} = bookCSS;
+const {
+  styleCategory,
+  styleAuthor,
+  styleTitle,
+  styleRemove,
+} = bookCSS;
+
 class Book extends React.Component {
   constructor(props) {
     super(props);
@@ -16,14 +22,19 @@ class Book extends React.Component {
   }
 
   render() {
-    const { id, title, author, category } = this.props;
+    const {
+      id,
+      title,
+      author,
+      category,
+    } = this.props;
     return (
       <div>
-        <div style={styleCategory} >{category}</div>
-        <div style={styleTitle} >{title}</div>
-        <div style={styleAuthor} >{author}</div>
+        <div style={styleCategory}>{category}</div>
+        <div style={styleTitle}>{title}</div>
+        <div style={styleAuthor}>{author}</div>
         <div>
-          <div style={styleRemove} type="submit" id={id} onClick={this.handleDelete}>
+          <div style={styleRemove} type="submit" id={id} onClick={this.handleDelete} onKeyDown={this.handleDelete} role="button">
             Delete
           </div>
         </div>
