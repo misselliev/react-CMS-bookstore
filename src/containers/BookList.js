@@ -2,17 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
 import { removeBook } from '../actions';
+import { styleCard } from '../components/styles/BookListStyle'
 
 const filtering = (books, filterRes) => (filterRes === 'All' ? books : books.filter(book => book.category === filterRes));
-
-const styleCard = {
-  borderRadius: 4,
-  border: 'solid 1 #e8e8e8',
-  backgroundColor: '#ffffff',
-  margin: '15px 100px 15px 100px',
-  padding: 27,
-  textAlign: 'left',
-};
 
 const BookList = ({ books, filter }) => (
   <div>

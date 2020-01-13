@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeFilter } from '../actions/index';
 import { bookCategories } from '../containers/BookForm';
+import { formSelector, labelSelect } from './styles/FilterStyle'
 
 
 const options = ['All', ...bookCategories];
@@ -11,9 +12,9 @@ const CategoryFilter = (props) => {
   const selectCategory = event => (changeFilter(books, event.target.value));
 
   return (
-    <div>
-      <label htmlFor="category">
-        <select id="category" name="category" books={books} onChange={selectCategory}>
+    <span>
+      <label htmlFor="category" style={labelSelect}>CATEGORIES: 
+        <select style={formSelector} id="category" name="category" books={books} onChange={selectCategory}>
           {options.map(category => (
             <option value={category} key={category}>
               {category}
@@ -21,7 +22,7 @@ const CategoryFilter = (props) => {
           ))}
         </select>
       </label>
-    </div>
+    </span>
   );
 };
 
