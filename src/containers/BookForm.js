@@ -68,6 +68,7 @@ class BooksForm extends React.Component {
             onChange={this.handleChange}
             placeholder="Book name"
             style={formInput}
+            required
           />
         </label>
         {' '}
