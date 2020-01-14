@@ -1,6 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createBook } from '../actions/index';
+import bookFormCSS from '../components/styles/BookFormStyle';
+
+const {
+  formStyle,
+  formTitle,
+  formSelector,
+  formInput,
+  formButton,
+} = bookFormCSS;
 
 export const bookCategories = [
   'Action',
@@ -11,6 +20,7 @@ export const bookCategories = [
   'Learning',
   'Sci-Fi',
 ];
+
 class BooksForm extends React.Component {
   constructor(props) {
     super(props);
@@ -44,29 +54,41 @@ class BooksForm extends React.Component {
   }
 
   render() {
+    const { input } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Add a New Book</h2>
-        <label>Book name</label>
-        <input
-          label="nameInput"
-          type="text"
-          name="input"
-          value={this.state.input}
-          onChange={this.handleChange}
-          placeholder="Book name"
-        />
+      <form onSubmit={this.handleSubmit} style={formStyle}>
+        <h2 style={formTitle}>ADD A NEW BOOK</h2>
+        <label htmlFor="bookName">
+          <input
+            id="bookName"
+            label="nameInput"
+            type="text"
+            name="input"
+            value={input}
+            onChange={this.handleChange}
+            placeholder="Book name"
+            style={formInput}
+            required
+          />
+        </label>
         {' '}
-        <label>Book category</label>
-        <select name="category" onChange={this.handleChange} label="selectCategory">
-          {bookCategories.map(category => (
-            <option value={category} key={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        <label htmlFor="bookCategory">
+          <select
+            style={formSelector}
+            id="bookCategory"
+            name="category"
+            onChange={this.handleChange}
+            label="selectCategory"
+          >
+            {bookCategories.map(category => (
+              <option value={category} key={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </label>
         {' '}
-        <button type="submit">Add Book</button>
+        <button type="submit" style={formButton}>ADD BOOK</button>
       </form>
     );
   }
